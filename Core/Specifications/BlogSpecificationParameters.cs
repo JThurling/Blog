@@ -26,7 +26,7 @@
 
         public int PageIndex { get; set; } = 1;
 
-        private int _pageSize = 6;
+        private int _pageSize = 3;
 
         public int PageSize
         {

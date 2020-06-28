@@ -1,1 +1,71 @@
-<p>blog works!</p>
+<div class="container">
+  <div class="row">
+    <section class="col-8 mt-4">
+
+      <div class="row">
+        <div *ngFor="let post of posts">
+          <app-blog-post [blog]="post"></app-blog-post>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <app-pager
+        [pageSize]="blogParameters.pageSize"
+        (pageChanged)="onPageChanged($event)"
+        [totalCount]="totalCount">
+        </app-pager>
+      </div>
+    </section>
+    <section class="col-md-4">
+
+      <!-- Search Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+          <div class="input-group">
+            <input (keyup.enter)="onSearch()" class="form-control mr-2" #search type="text" class="form-control"
+                   placeholder="Search for...">
+            <span class="input-group-btn">
+              <button (click)="onSearch()" class="btn btn-outline-warning customButton" type="button"><i class="fa fa-search"></i></button>
+              <button (click)="onReset()" class="btn btn-outline-secondary customButton"><i class="fa fa-refresh"></i></button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sort Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Sort</h5>
+        <div class="card-body">
+          <select class="custom-select mb-3" (change)="onSortSelected($event.target.value)">
+            <option *ngFor="let sort of sortOptions" [value]="sort.value">
+              {{sort.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Categories Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Categories</h5>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <ul class="list-unstyled mb-0">
+                <li *ngFor="let category of categories"
+                    [value]="category.id"
+                    (click)="onCategorySelected(category.id)"
+                    [class.active]="category.id === this.blogParameters.categoryId"
+                    class="customList my-2">
+                  {{category.name}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+  </div>
+</div>

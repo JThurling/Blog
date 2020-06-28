@@ -1,1 +1,10 @@
-<p>pager works!</p>
+<pagination
+  [boundaryLinks]="true"
+  (pageChanged)="onPageChange($event)"
+  [totalItems]="totalCount"
+  [itemsPerPage]="pageSize"
+  previousText="&lsaquo;"
+  nextText="&rsaquo;"
+  firstText="&laquo;"
+  lastText="&raquo;">
+</pagination>

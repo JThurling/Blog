@@ -39,11 +39,15 @@ namespace BlogApplication.Controllers
         {
             var spec = new BlogWithSpecificationTypes(blogSpecificationParameters);
 
+            var countSpec = new BlogWithSpecificationCount(blogSpecificationParameters);
+
+            var totalPost = await _blogRepository.CountAsync(countSpec);
+
             var blogPosts = await _blogRepository.ListAsync(spec);
             
             var blogList = _mapper.Map<IReadOnlyList<BlogEntity>, IReadOnlyList<BlogToReturnDto>>(blogPosts);
 
-            return Ok(new Paging<BlogToReturnDto>(blogSpecificationParameters.PageIndex, blogSpecificationParameters.PageSize, blogList));
+            return Ok(new Paging<BlogToReturnDto>(blogSpecificationParameters.PageIndex, blogSpecificationParameters.PageSize, totalPost, blogList));
         }
         
         [HttpGet("{id}")]

@@ -1,0 +1,21 @@
+.customButton {
+  border-radius: 0px;
+}
+
+.active {
+  padding: 10px;
+  background: orange;
+  color: white;
+  box-shadow: 0px 2px 7px rgba(52, 52, 52, 0.38);
+}
+
+.customList {
+  padding: 10px;
+  border-radius: 3px;
+
+  &.customList:hover {
+    background: rgba(255, 132, 0, 0.68);
+    transition: 0.25s ease-in-out;
+    cursor: pointer;
+  }
+}

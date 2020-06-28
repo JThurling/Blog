@@ -1,1 +1,12 @@
-<p>blog-post works!</p>
+<div class="card mb-4 custom">
+  <img class="card-img-top" src="{{blog.pictureUrl}}" alt="Card image cap">
+  <div class="card-body">
+    <h2 class="card-title">{{blog.name}}</h2>
+    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+    <a href="#" class="btn btn-warning">Read More →</a>
+  </div>
+  <div class="card-footer d-flex justify-content-between text-muted">
+    <span>Posted on {{blog.publishedDate}} by <strong>{{blog.blogAuthor}}</strong></span>
+    <span class="badge badge-pill badge-warning">{{blog.tags}}</span>
+  </div>
+</div>
